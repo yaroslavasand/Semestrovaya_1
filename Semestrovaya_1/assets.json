@@ -1,0 +1,46 @@
+[
+  {
+    "url": "https://lolstatic-a.akamaihd.net/webfonts/live/fonts/beaufort/BeaufortforLOL-Bold.woff",
+    "path": "Static/fonts/BeaufortforLOL-Bold.woff"
+  },
+  {
+    "url": "https://lolstatic-a.akamaihd.net/webfonts/live/fonts/beaufort/BeaufortforLOL-Heavy.woff",
+    "path": "Static/fonts/BeaufortforLOL-Heavy.woff"
+  },
+  {
+    "url": "https://lolstatic-a.akamaihd.net/webfonts/live/fonts/ttnormsprocompact/TTNormsProCompactRegular.woff",
+    "path": "Static/fonts/TTNormsProCompactRegular.woff"
+  },
+  {
+    "url": "https://lolstatic-a.akamaihd.net/webfonts/live/fonts/ttnormsprocompact/TTNormsProCompactMedium.woff",
+    "path": "Static/fonts/TTNormsProCompactMedium.woff"
+  },
+  {
+    "url": "https://lolstatic-a.akamaihd.net/webfonts/live/fonts/ttnormsprocompact/TTNormsProCompactBold.woff",
+    "path": "Static/fonts/TTNormsProCompactBold.woff"
+  },
+  {
+    "url": "https://playriftbound.com/_next/static/node_modules/@riot-private/blades-ui/dist/skins/common/assets/search.svg",
+    "path": "Static/images/icons/search.svg"
+  },
+  {
+    "url": "https://playriftbound.com/_next/static/node_modules/@riot-private/blades-ui/dist/skins/common/assets/filter.svg",
+    "path": "Static/images/icons/filter.svg"
+  },
+  {
+    "url": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/riotbar/6222c5f038cd27fe9fc5aec17616e7ba0ea1c69e-2105x2105.svg?&h=50&fit=max",
+    "path": "Static/images/logos/riftbound.svg"
+  },
+  {
+    "url": "https://playriftbound.com/_next/static/node_modules/@riot-private/blades-ui/dist/skins/common/assets/accordion-plus.svg",
+    "path": "Static/images/icons/accordion-plus.svg"
+  },
+  {
+    "url": "https://playriftbound.com/_next/static/node_modules/@riot-private/blades-ui/dist/skins/common/assets/checkmark.svg",
+    "path": "Static/images/icons/checkmark.svg"
+  },
+  {
+    "url": "https://playriftbound.com/_next/static/node_modules/@riot-private/blades-ui/dist/skins/common/assets/chevron-down.svg",
+    "path": "Static/images/icons/chevron-down.svg"
+  }
+]

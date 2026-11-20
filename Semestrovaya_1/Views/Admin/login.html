@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Вход администратора</title>
+    <link rel="icon"
+          href="/Static/images/logos/riftbound.svg"
+          type="image/svg+xml">
+    <link rel="stylesheet" href="/Static/css/admin.css">
+</head>
+<body>
+<main class="admin-shell admin-shell--narrow">
+    <h1>Вход администратора</h1>
+
+    <p class="admin-error" role="alert">{{Error}}</p>
+
+    <form action="/admin/login" method="post">
+        <input type="hidden" name="csrf" value="{{CsrfToken}}">
+
+        <label for="username">Логин</label>
+        <input id="username"
+               name="username"
+               type="text"
+               autocomplete="username"
+               maxlength="100"
+               required>
+
+        <label for="password">Пароль</label>
+        <input id="password"
+               name="password"
+               type="password"
+               autocomplete="current-password"
+               maxlength="200"
+               required>
+
+        <button type="submit">Войти</button>
+    </form>
+
+    <a href="/">Вернуться в галерею</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Удаление карточки</title>
+    <link rel="stylesheet" href="/Static/css/admin.css">
+</head>
+<body>
+<main class="admin-shell admin-shell--narrow">
+    <h1>Удаление карточки</h1>
+
+    <p>Карточка: {{Name}}</p>
+    <p>Код: {{Code}}</p>
+
+    <p>
+        Будут удалены сама запись карточки и её связи
+        с доменами, типами и тегами.
+        Сами справочники и файл изображения останутся.
+    </p>
+
+    <p>
+        Через интерфейс отменить удаление нельзя.
+        Для проверки удаляй только созданную тобой тестовую карточку.
+    </p>
+
+    <form action="/admin/cards/delete?id={{Id}}" method="post">
+        <input type="hidden" name="csrf" value="{{CsrfToken}}">
+        <button type="submit">Подтверждаю удаление карточки</button>
+    </form>
+
+    <a href="/admin/cards">Отмена — не удалять</a>
+</main>
+</body>
+</html>

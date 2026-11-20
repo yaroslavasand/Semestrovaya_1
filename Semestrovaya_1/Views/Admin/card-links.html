@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Связи карточки — админка</title>
+    <link rel="stylesheet" href="/Static/css/admin.css">
+    <base target="_blank">
+</head>
+<body>
+<main class="admin-shell admin-shell--editor">
+    <h1>Домены, типы и теги</h1>
+
+    <p>Карточка: {{Name}}</p>
+
+    <p>
+        Отметь значения, которые относятся к этой карточке.
+        Сохранение обновит сразу все три группы.
+    </p>
+
+    <p class="admin-error" role="alert">{{Error}}</p>
+
+    <form action="/admin/cards/links?id={{Id}}" method="post">
+        <input type="hidden" name="csrf" value="{{CsrfToken}}">
+
+        <fieldset class="admin-link-group">
+            <legend>Домены</legend>
+            {{#if HasDomains}}
+            {{#each DomainOptions}}
+            <label class="admin-checkbox">
+                <input type="checkbox"
+                       name="{{FieldName}}"
+                       value="1"
+                       {{Checked}}>
+                <span>{{Name}}</span>
+            </label>
+            {{/each}}
+            {{else}}
+            <p>В этом справочнике пока нет записей.</p>
+            {{/if}}
+        </fieldset>
+
+        <fieldset class="admin-link-group">
+            <legend>Типы карточки</legend>
+            {{#if HasTypes}}
+            {{#each TypeOptions}}
+            <label class="admin-checkbox">
+                <input type="checkbox"
+                       name="{{FieldName}}"
+                       value="1"
+                       {{Checked}}>
+                <span>{{Name}}</span>
+            </label>
+            {{/each}}
+            {{else}}
+            <p>В этом справочнике пока нет записей.</p>
+            {{/if}}
+        </fieldset>
+
+        <fieldset class="admin-link-group">
+            <legend>Теги</legend>
+            {{#if HasTags}}
+            {{#each TagOptions}}
+            <label class="admin-checkbox">
+                <input type="checkbox"
+                       name="{{FieldName}}"
+                       value="1"
+                       {{Checked}}>
+                <span>{{Name}}</span>
+            </label>
+            {{/each}}
+            {{else}}
+            <p>В этом справочнике пока нет записей.</p>
+            {{/if}}
+        </fieldset>
+
+        <p>
+            Если снять все галочки в группе, у карточки
+            не останется связей с этой группой.
+        </p>
+
+        <button type="submit">Сохранить связи</button>
+    </form>
+
+    <nav class="admin-actions">
+        <a href="/admin/cards/edit?id={{Id}}">
+            Характеристики карточки
+        </a>
+        <a href="/admin/cards">Вернуться к списку</a>
+    </nav>
+</main>
+</body>
+</html>

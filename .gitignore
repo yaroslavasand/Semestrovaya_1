@@ -1,0 +1,14 @@
+# Секреты
+.env
+.env.*
+
+# Сборка
+bin/
+obj/
+**/TestResults/
+
+# Rider / IDE
+.idea/
+.vs/
+*.user
+*.suo

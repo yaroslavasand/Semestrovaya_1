@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Создание карточки</title>
+    <link rel="stylesheet" href="/Static/css/admin.css">
+    <base target="_blank">
+</head>
+<body>
+<main class="admin-shell admin-shell--editor">
+    <h1>Создание карточки</h1>
+
+    <p>
+        Сначала создаём основную запись.
+        После сохранения откроется редактор характеристик.
+        Домены, типы и теги назначаются на отдельной странице.
+    </p>
+
+    <p class="admin-error" role="alert">{{Error}}</p>
+
+    <form action="/admin/cards/create" method="post">
+        <input type="hidden" name="csrf" value="{{CsrfToken}}">
+
+        <label for="code">Уникальный код карточки</label>
+        <input id="code"
+               name="code"
+               type="text"
+               value="{{Code}}"
+               maxlength="50"
+               pattern="[a-z0-9]+(-[a-z0-9]+)*"
+               aria-describedby="code-hint"
+               required>
+
+        <small id="code-hint">
+            Например: test-card-001.
+            Маленькие латинские буквы, цифры и дефисы между частями.
+        </small>
+
+        <label for="name">Название</label>
+        <input id="name"
+               name="name"
+               type="text"
+               value="{{Name}}"
+               maxlength="200"
+               required>
+
+        <label for="setId">Набор</label>
+        <select id="setId" name="setId" required>
+            <option value="">Выбери набор</option>
+            {{#each SetOptions}}
+            <option value="{{Value}}" {{Selected}}>{{Text}}</option>
+            {{/each}}
+        </select>
+
+        <label for="imagePath">Изображение</label>
+        <select id="imagePath" name="imagePath" required>
+            <option value="">Выбери файл изображения</option>
+            {{#each ImageOptions}}
+            <option value="{{Value}}" {{Selected}}>{{Text}}</option>
+            {{/each}}
+        </select>
+
+        <small>
+            Здесь перечислены файлы из Static/images/cards.
+            Создание карточки не изменяет эти файлы.
+        </small>
+
+        <button type="submit">Создать и заполнить характеристики</button>
+    </form>
+
+    <a href="/admin/cards">Отмена — вернуться к списку</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<article class="card-details-shell">
+    <header class="card-details-header">
+        <h2>{{Name}}</h2>
+        <p>{{DisplayCode}}</p>
+    </header>
+
+    <div class="card-details-scroll">
+        <div class="card-details-layout">
+            <div class="card-details-picture">
+                <img src="{{ImagePath}}" alt="{{Name}}"/>
+            </div>
+
+            <div class="card-details-info">
+                <dl class="card-details-stats">
+                    <div>
+                        <dt>Energy</dt>
+                        <dd>
+                            <span class="card-details-energy">
+                                {{Energy}}
+                            </span>
+                        </dd>
+                    </div>
+
+                    <div>
+                        <dt>Power</dt>
+                        <dd>
+                            <img class="card-details-icon"
+                                 src="/Static/images/icons/power.svg"
+                                 alt=""
+                                 width="24"
+                                 height="24"/>
+                            <span>{{Power}}</span>
+                        </dd>
+                    </div>
+
+                    <div>
+                        <dt>Might</dt>
+                        <dd>
+                            <img class="card-details-icon"
+                                 src="/Static/images/icons/might.svg"
+                                 alt=""
+                                 width="24"
+                                 height="24"/>
+                            <span>{{Might}}</span>
+                        </dd>
+                    </div>
+                </dl>
+
+                <section class="card-details-section">
+                    <h3>Domain</h3>
+
+                    <p class="card-details-value">
+                        <img class="card-details-icon"
+                             src="/Static/images/icons/order.webp"
+                             alt=""
+                             width="24"
+                             height="24"/>
+                        <span>{{Domains}}</span>
+                    </p>
+                </section>
+
+                <section class="card-details-section">
+                    <h3>Card Type</h3>
+
+                    <div class="card-details-types"
+                         data-card-detail-types>{{Types}}</div>
+                </section>
+
+                <section class="card-details-section">
+                    <h3>Tags</h3>
+                    <p>{{Tags}}</p>
+                </section>
+
+                <section class="card-details-section">
+                    <h3>Ability</h3>
+                    <p class="card-details-ability">{{{Ability}}}</p>
+                </section>
+
+                <section class="card-details-section">
+                    <h3>Rarity</h3>
+
+                    <p class="card-details-value">
+                        <img class="card-details-icon"
+                             src="/Static/images/icons/showcase.webp"
+                             alt=""
+                             width="24"
+                             height="24"/>
+                        <span>{{Rarity}}</span>
+                    </p>
+                </section>
+
+                <section class="card-details-section">
+                    <h3>Artist</h3>
+                    <p>{{Artist}}</p>
+                </section>
+
+                <section class="card-details-section">
+                    <h3>Card Set</h3>
+                    <p>{{SetName}}</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Карточки — админка</title>
+    <link rel="stylesheet" href="/Static/css/admin.css">
+    <base target="_blank">
+</head>
+<body>
+<main class="admin-shell">
+    <h1>Карточки</h1>
+
+    <nav class="admin-actions">
+        <a href="/admin">Главная админки</a>
+        <a href="/admin/cards/create">Создать карточку</a>
+        <a href="/">Открыть галерею</a>
+    </nav>
+
+    <p class="admin-success" role="status">{{Message}}</p>
+    <p>Всего карточек: {{Count}}</p>
+
+    <div class="admin-table-wrapper">
+        <table class="admin-table">
+            <thead>
+            <tr>
+                <th scope="col">Изображение</th>
+                <th scope="col">Код карточки</th>
+                <th scope="col">Название</th>
+                <th scope="col">Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each Cards}}
+            <tr>
+                <td>
+                    <img class="admin-card-preview"
+                         src="{{ImagePath}}"
+                         alt="{{Name}}"
+                         loading="lazy">
+                </td>
+                <td>{{Code}}</td>
+                <td>{{Name}}</td>
+                <td>
+                    <div class="admin-actions">
+                        <a href="/admin/cards/edit?id={{Id}}">
+                            Характеристики
+                        </a>
+                        <a href="/admin/cards/links?id={{Id}}">
+                            Домены, типы и теги
+                        </a>
+                        <a href="/admin/cards/delete?id={{Id}}">
+                            Удалить
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

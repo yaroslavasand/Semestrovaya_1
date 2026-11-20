@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Административная панель</title>
+    <link rel="icon"
+          href="/Static/images/logos/riftbound.svg"
+          type="image/svg+xml">
+    <link rel="stylesheet" href="/Static/css/admin.css">
+</head>
+<body>
+<main class="admin-shell">
+    <h1>Административная панель</h1>
+
+    <p>Вход выполнен. Доступ к административному разделу подтверждён.</p>
+
+    <section class="admin-panel">
+        <h2>Управление контентом</h2>
+
+        <nav class="admin-actions">
+            <a href="/admin/cards">Карточки</a>
+            <a href="/admin/sets">Наборы карточек</a>
+            <a href="/admin/domains">Домены</a>
+            <a href="/admin/types">Типы карточек</a>
+            <a href="/admin/tags">Теги</a>
+        </nav>
+
+        <p>
+            Просмотр, создание, редактирование и удаление
+            записей справочников.
+        </p>
+    </section>
+
+    <form action="/admin/logout" method="post">
+        <input type="hidden" name="csrf" value="{{CsrfToken}}">
+        <button type="submit">Выйти</button>
+    </form>
+
+    <a href="/">Открыть галерею</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Удаление набора</title>
+    <link rel="stylesheet" href="/Static/css/admin.css">
+</head>
+<body>
+<main class="admin-shell admin-shell--narrow">
+    <h1>Удаление набора</h1>
+
+    <p>Удалить набор «{{Name}}» с кодом {{Code}}?</p>
+    <p>Это действие нельзя отменить через интерфейс.</p>
+
+    <p class="admin-error" role="alert">{{Error}}</p>
+
+    <form action="/admin/sets/delete?id={{Id}}" method="post">
+        <input type="hidden" name="csrf" value="{{CsrfToken}}">
+        <button type="submit">Подтверждаю удаление</button>
+    </form>
+
+    <a href="/admin/sets">Отмена — не удалять</a>
+</main>
+</body>
+</html>

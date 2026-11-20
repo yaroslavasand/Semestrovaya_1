@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{Title}}</title>
+    <link rel="stylesheet" href="/Static/css/admin.css">
+    <script src="/Static/js/admin-set-form.js" defer></script>
+</head>
+<body>
+<main class="admin-shell admin-shell--narrow">
+    <h1>{{Title}}</h1>
+
+    <form action="{{Action}}" method="post" data-set-form>
+        <input type="hidden" name="csrf" value="{{CsrfToken}}">
+
+        <label for="code">Код набора</label>
+        <input id="code"
+               name="code"
+               type="text"
+               value="{{Code}}"
+               maxlength="30"
+               pattern="[a-z0-9]+(-[a-z0-9]+)*"
+               aria-describedby="code-hint code-error"
+               required>
+
+        <small id="code-hint">
+            Например: test-set. Латинские буквы в нижнем регистре,
+            цифры и дефисы между частями.
+        </small>
+
+        <p id="code-error" class="admin-error" aria-live="polite">{{CodeError}}</p>
+
+        <label for="name">Название</label>
+        <input id="name"
+               name="name"
+               type="text"
+               value="{{Name}}"
+               maxlength="150"
+               aria-describedby="name-error"
+               required>
+
+        <p id="name-error" class="admin-error" aria-live="polite">{{NameError}}</p>
+
+        <label for="description">Описание</label>
+        <textarea id="description"
+                  name="description"
+                  rows="6"
+                  maxlength="2000"
+                  aria-describedby="description-count description-error">{{Description}}</textarea>
+
+        <small id="description-count" aria-live="polite"></small>
+        <p id="description-error" class="admin-error" aria-live="polite">{{DescriptionError}}</p>
+
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <a href="/admin/sets">Отмена — вернуться к списку</a>
+</main>
+</body>
+</html>

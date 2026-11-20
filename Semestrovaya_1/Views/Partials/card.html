@@ -1,0 +1,13 @@
+{{#if HasCards}}
+{{#each Cards}}
+<div class="gallery-card" data-card-id="{{Code}}">
+    <img src="{{ImagePath}}"
+         alt="{{Name}}. {{Code}}."
+         loading="lazy"/>
+</div>
+{{/each}}
+{{else}}
+<p class="gallery-empty" role="status">
+    Карточки не найдены.
+</p>
+{{/if}}

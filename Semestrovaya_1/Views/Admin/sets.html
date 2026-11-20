@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Наборы карточек — админка</title>
+    <link rel="stylesheet" href="/Static/css/admin.css">
+</head>
+<body>
+<main class="admin-shell">
+    <h1>Наборы карточек</h1>
+
+    <nav class="admin-actions">
+        <a href="/admin">Главная админки</a>
+        <a href="/admin/sets/create">Создать набор</a>
+    </nav>
+
+    {{#if HasSets}}
+    <div class="admin-table-wrapper">
+        <table class="admin-table">
+            <thead>
+            <tr>
+                <th scope="col">Код</th>
+                <th scope="col">Название</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each Sets}}
+            <tr>
+                <td>{{Code}}</td>
+                <td>{{Name}}</td>
+                <td>{{Description}}</td>
+                <td>
+                    <div class="admin-actions">
+                        <a href="/admin/sets/edit?id={{Id}}">
+                            Изменить
+                        </a>
+                        <a href="/admin/sets/delete?id={{Id}}">
+                            Удалить
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{else}}
+    <p>Наборов пока нет. Создай первый набор.</p>
+    {{/if}}
+</main>
+</body>
+</html>

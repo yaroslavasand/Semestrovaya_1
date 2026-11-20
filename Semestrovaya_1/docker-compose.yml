@@ -1,0 +1,46 @@
+services:
+  db:
+    image: postgres:17
+    container_name: oris-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: oris_riftbound
+    volumes:
+      # Данные базы переживают перезапуск контейнеров.
+      - db-data:/var/lib/postgresql/data
+
+      # Скрипты выполняются автоматически при первом
+      # создании базы, в алфавитном порядке имён файлов.
+      - ./Sql/001_create_tables.sql:/docker-entrypoint-initdb.d/001_create_tables.sql:ro
+      - ./Sql/002_seed_domains.sql:/docker-entrypoint-initdb.d/002_seed_domains.sql:ro
+      - ./Sql/003_seed_initial_cards.sql:/docker-entrypoint-initdb.d/003_seed_initial_cards.sql:ro
+      - ./Sql/004_seed_gallery_cards.sql:/docker-entrypoint-initdb.d/004_seed_gallery_cards.sql:ro
+      - ./Sql/005_add_is_new.sql:/docker-entrypoint-initdb.d/005_add_is_new.sql:ro
+      - ./Sql/006_fill_card_details.sql:/docker-entrypoint-initdb.d/006_fill_card_details.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d oris_riftbound"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  app:
+    build: .
+    container_name: oris-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        # Приложение стартует только после того,
+        # как база реально принимает подключения.
+        condition: service_healthy
+    environment:
+      ORIS_DB_CONNECTION: Host=db;Port=5432;Database=oris_riftbound;Username=postgres;Password=${POSTGRES_PASSWORD}
+      ORIS_ADMIN_USERNAME: ${ORIS_ADMIN_USERNAME}
+      ORIS_ADMIN_PASSWORD: ${ORIS_ADMIN_PASSWORD}
+      ORIS_HTTP_PREFIX: http://+:8080/
+    ports:
+      - "127.0.0.1:8080:8080"
+
+volumes:
+  db-data:

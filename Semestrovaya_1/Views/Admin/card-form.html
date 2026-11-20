@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Редактирование карточки</title>
+    <link rel="stylesheet" href="/Static/css/admin.css">
+    <link rel="stylesheet" href="/Static/css/admin.css">
+    <link rel="stylesheet" href="/Static/lib/quill/quill.snow.css">
+    <script src="/Static/lib/quill/quill.js" defer></script>
+    <script src="/Static/js/admin-card-wysiwyg.js" defer></script>
+</head>
+<body>
+<main class="admin-shell admin-shell--editor">
+    <h1>Редактирование карточки</h1>
+
+    <p>
+        Здесь меняются текстовые данные и характеристики.
+        Сам файл изображения карточки не перерисовывается.
+    </p>
+
+    <p class="admin-error" role="alert">{{Error}}</p>
+
+    <form action="/admin/cards/edit?id={{Id}}" method="post" data-card-form>
+        <input type="hidden" name="csrf" value="{{CsrfToken}}">
+
+        <label for="name">Название карточки</label>
+        <input id="name"
+               name="name"
+               type="text"
+               value="{{Name}}"
+               maxlength="200"
+               required>
+
+        <div class="admin-stats-grid">
+            <div>
+                <label for="energy">Energy</label>
+                <input id="energy"
+                       name="energy"
+                       type="number"
+                       min="0"
+                       max="2147483647"
+                       step="1"
+                       value="{{Energy}}">
+            </div>
+
+            <div>
+                <label for="power">Power</label>
+                <input id="power"
+                       name="power"
+                       type="number"
+                       min="0"
+                       max="2147483647"
+                       step="1"
+                       value="{{Power}}">
+            </div>
+
+            <div>
+                <label for="might">Might</label>
+                <input id="might"
+                       name="might"
+                       type="number"
+                       min="0"
+                       max="2147483647"
+                       step="1"
+                       value="{{Might}}">
+            </div>
+        </div>
+
+        <small>
+            Пустое числовое поле означает отсутствие характеристики.
+            Ноль — отдельное значение.
+        </small>
+
+        <label for="artist">Автор иллюстрации</label>
+        <input id="artist"
+               name="artist"
+               type="text"
+               value="{{Artist}}"
+               maxlength="200">
+
+        <span id="ability-label">Текст способности</span>
+        <input id="ability" name="ability" type="hidden" value="{{Ability}}">
+        <div id="ability-editor" class="admin-wysiwyg"
+             aria-labelledby="ability-label"></div>
+
+        <small>
+            Обозначение [S] оставляй как в исходном тексте:
+            окно Seraphine заменяет его значком Might.
+        </small>
+
+        <label class="admin-checkbox" for="isNew">
+            <input id="isNew"
+                   name="isNew"
+                   type="checkbox"
+                   value="true"
+                   {{IsNewChecked}}>
+            Показывать при включённом фильтре New Cards
+        </label>
+
+        <button type="submit">Сохранить изменения</button>
+    </form>
+    <p>
+        <a href="/admin/cards/links?id={{Id}}">
+            Настроить домены, типы и теги
+        </a>
+    </p>
+    <a href="/admin/cards">Отмена — вернуться к списку</a>
+</main>
+</body>
+</html>
